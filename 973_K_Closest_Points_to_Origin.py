@@ -6,7 +6,9 @@ We have a list of points on the plane.  Find the K closest points to the origin 
 You may return the answer in any order.  The answer is guaranteed to be unique (except for the order that it is in.)
 """
 
-"""SOLUTION:
+"""SOLUTION: Add points and distance to a new list. Then sort by distance to origin.
+
+"""
 
 class Solution(object):
     def kClosest(self, points, K):
