@@ -27,38 +27,15 @@
 
 ## SOLUTION: Treat each room as a node and apply DFS on the directed graph.
 
-class Solution(object):
-    def canVisitAllRooms(self, rooms):
-        """
-        :type rooms: List[List[int]]
-        :rtype: bool
-        """
-        n = len(rooms)
-        visited = [0]*n
-        visited[0] = 1
-        
-        for j in range(len(rooms[0])):
-            if visited[rooms[0][j]] == 1:
-                continue
-            else:
-                if rooms[0][j] == 0: # Check if room number = key number
-                    continue
-                else:
-                    visited[rooms[0][j]] = 1
-                    self.dfs(visited, rooms, rooms[0][j])
-        
-        for n in visited:
-            if n != 1:
-                return False
-        
-        return True
-        
-    def dfs(self, visited, rooms, j):
-        for k in rooms[j]:
-            if k == j: # Check if room number = key number
-                continue
-            else:
-                if visited[k] != 1:
-                    visited[k] = 1
-                    self.dfs(visited, rooms, k)
- 
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        # rooms is the adjacency list
+        n_rooms = len(rooms)
+        stack, visited = [0], set()
+        while stack:
+            room_num = stack.pop()
+            if room_num not in visited:
+                visited.add(room_num)
+                stack.extend(set(rooms[room_num]) - visited)
+        return len(visited) == n_rooms
+    
