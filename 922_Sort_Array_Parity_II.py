@@ -35,4 +35,28 @@ class Solution(object):
             else:
                 odd += 2
         return A
+    
+    """ O(N) space solution
+    def sortArrayByParityII(self, A: List[int]) -> List[int]:
+        res = [0]*len(A)
+        odd_idx, even_idx = 0, 0
+        for num in A:
+            if not num%2:
+                res[2*even_idx] = num
+                even_idx += 1
+            else:
+                res[2*odd_idx + 1] = num
+                odd_idx += 1
+        return res
+    
+    O(1) space solution
+    def sortArrayByParityII(self, A):
+        j = 1
+        for i in xrange(0, len(A), 2):
+            if A[i] % 2:
+                while A[j] % 2:
+                    j += 2
+                A[i], A[j] = A[j], A[i]
+        return A
+    """
         
