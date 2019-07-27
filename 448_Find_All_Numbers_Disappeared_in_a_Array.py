@@ -20,4 +20,17 @@ class Solution:
                 res.append(i+1)
         
         return res
-                
+   
+        """
+        for i in range(len(nums)):
+            temp = abs(nums[i]) - 1
+            nums[temp] = -abs(nums[temp])
+        
+        res = []
+        for i,n in enumerate(nums):
+            if n > 0:
+                res.append(i+1)
+        
+        return res
+        """
+        
